@@ -3,6 +3,7 @@
 check if a all the list of boxes can be opened
 """
 
+
 def canUnlockAll(boxes):
     """
     This function takes a list of lists and returns a boolean indicating
