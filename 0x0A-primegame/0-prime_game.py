@@ -1,0 +1,41 @@
+#!/usr/bin/python3
+"""a prime game"""
+
+
+def isWinner(x, number):
+    """x - rounds
+    number - numbers list
+    """
+    if x <= 0 or number is None:
+        return None
+    if x != len(number):
+        return None
+
+    ben = 0
+    maria = 0
+
+    a = [1 for x in range(sorted(number)[-1] + 1)]
+    a[0], a[1] = 0, 0
+    for i in range(2, len(a)):
+        rm_multiples(a, i)
+
+    for i in number:
+        if sum(a[0:i + 1]) % 2 == 0:
+            ben += 1
+        else:
+            maria += 1
+    if ben > maria:
+        return "Ben"
+    if maria > ben:
+        return "Maria"
+    return None
+
+
+def rm_multiples(ls, x):
+    """multiple of primes to be removed
+    """
+    for i in range(2, len(ls)):
+        try:
+            ls[i * x] = 0
+        except (ValueError, IndexError):
+            break
